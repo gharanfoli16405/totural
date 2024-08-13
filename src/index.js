@@ -1,18 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
-import { JSXRouter } from "router";
 import "./styles/main.scss";
-import { BrowserRouter } from "react-router-dom";
+import { route } from "router";
+
 // import App from "App";
 
-//
 const root = ReactDOM.createRoot(document.getElementById("root"));
-console.log("index.js");
+
 root.render(
   <React.StrictMode>
-    <RouterProvider router={JSXRouter} />
-
-    <BrowserRouter>{/* <App /> */}</BrowserRouter>
+    <RouterProvider router={route} />
+    {/* <RouterProvider fallbackElement={<BigSpinner />}/> */}
   </React.StrictMode>
 );

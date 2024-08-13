@@ -1,8 +1,2 @@
-export const careersLoader = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  const json = await res.json();
-
-  return json;
-};
-
+export { HomeLoader } from "apis/Home";
 export { default } from "./Home";
