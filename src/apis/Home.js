@@ -1,14 +1,24 @@
 import axios from "axios";
 import baseUrl, { urls } from "constant/reqRes";
+
 const HomeLoader = async () => {
-  try {
-    const res = await axios.get(baseUrl + urls.singleUserNotFound);
-    return await res;
-  } catch (error) {
-    // Handle errors
-    console.log("Error fetching data:", error.response.status);
-  }
+  const url = baseUrl + urls.singleUser;
+  const data = await axios.get(url);
+  return data;
 };
+// const HomeLoader = async () => {
+//   const res = await axios.get(baseUrl + urls.singleUser);
+//   return await res;
+// };
+
+// const HomeLoader = async () => {
+//   try {
+//     const res = await axios.get(baseUrl + urls.singleUser);
+//     return await res;
+//   } catch (error) {
+//     // Handle errors
+//   }
+// };
 
 // export const getData = async () => {
 //   const response = await axios.get(

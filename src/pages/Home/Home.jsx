@@ -1,20 +1,36 @@
-import { useLoaderData } from "react-router-dom";
+import { useState } from "react";
 
-export default function Home() {
-  const {
-    data: {
-      data: { avatar, first_name },
-    },
-  } = useLoaderData();
+const Home = () => {
+  const [count, setcount] = useState(0);
+
+  const handleClick = () => {
+    console.log("initial - ", count);
+    // setcount((current) => current - 1);
+    setcount(count + 1, (prevValue, newValue) => {
+      console.log(newValue);
+    });
+  };
 
   return (
     <>
-      <h1>In the name of god</h1>
-      <h2>this is my home</h2>
-      <figure>
-        <img src={avatar} alt="" />
-        <figcaption>{first_name}</figcaption>
-      </figure>
+      <div className="flex py-24 align-middle">
+        <button className="border border-black p-4" onClick={handleClick}>
+          decrease
+        </button>
+        <div className="mx-10">{count}</div>
+        {/* <button
+          className="border border-black p-4"
+          onClick={() =>
+            setTimeout(function () {
+              setcount((current) => current + 1);
+            }, 3000)
+          }
+        >
+          increase{" "}
+        </button> */}
+      </div>
     </>
   );
-}
+};
+
+export default Home;

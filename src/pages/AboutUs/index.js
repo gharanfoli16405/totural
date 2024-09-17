@@ -1,5 +1,5 @@
-import axios from "axios";
-import baseUrl, { urls } from "constant/reqRes";
+// import axios from "axios";
+// import baseUrl, { urls } from "constant/reqRes";
 
 // export const getData = () => {
 //   axios.get(baseUrl + urls.listUsers).then((res) => {
@@ -7,10 +7,10 @@ import baseUrl, { urls } from "constant/reqRes";
 //   });
 // };
 
-export const getData = async () => {
-  const res = await axios.get(baseUrl + urls.singleUserNotFound);
-  return await res;
-};
+// export const getData = async () => {
+//   const res = await axios.get(baseUrl + urls.singleUserNotFound);
+//   return await res;
+// };
 
 // export const getData = async () => {
 //   try {
