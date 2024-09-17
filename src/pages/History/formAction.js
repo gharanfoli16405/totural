@@ -1,0 +1,5 @@
+export const formActionTypes = {
+  INPUT_FIELD: "INPUT_FIELD",
+  SELECT_FIELD: "SELECT_FIELD",
+  CHECKBOX_FIELD: "CHECKBOX_FIELD",
+};

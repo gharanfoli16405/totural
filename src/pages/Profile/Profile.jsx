@@ -1,25 +1,32 @@
-import { useState, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 import { GetUser } from "apis/Profile";
+import {
+  dataLoaderReducer,
+  initialState,
+} from "reducers/dataLoader/dataLoaderReducer";
+import {
+  getDataStart,
+  getDataSuccess,
+  getDataFailure,
+} from "reducers/dataLoader/dataLoadderAction";
 
 const Profile = () => {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState({});
-  const [error, setError] = useState(false);
+  const [state, dispatch] = useReducer(dataLoaderReducer, initialState);
+
+  const { loading, data, error } = state;
+  console.log("state", state);
 
   useEffect(() => {
-    setLoading(true);
+    dispatch(getDataStart());
     GetUser()
       .then((res) => {
         const {
           data: { data },
         } = res;
-        setData(data);
+        dispatch(getDataSuccess(data));
       })
       .catch((e) => {
-        setError(true);
-      })
-      .finally(() => {
-        setLoading(false);
+        dispatch(getDataFailure(data));
       });
   }, []);
 

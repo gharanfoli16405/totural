@@ -1,21 +1,12 @@
-import { type } from "@testing-library/user-event/dist/type";
-import { useState } from "react";
+import { useReducer } from "react";
+
+import { formReducer, initialState } from "reducers/form/formReducer";
+
+import { getInputFile, getMultiSelect } from "reducers/form/formActtion";
 
 const History = () => {
-  const [title, setTitle] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [age, setAge] = useState(null);
-  const [gender, setGender] = useState("");
-  const [favorite, setFavorite] = useState({
-    horns: false,
-    scales: false,
-  });
-
-  const handleChangeFavorite = (e) => {
-    setFavorite({ ...favorite, [e.target.name]: !favorite[e.target.name] });
-  };
+  const [state, dispatch] = useReducer(formReducer, initialState);
+  const { title, firstName, email, phoneNumber, age, gender, favorite } = state;
 
   return (
     <>
@@ -27,7 +18,11 @@ const History = () => {
             name="title"
             id="title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) =>
+              dispatch(
+                getInputFile({ name: e.target.name, value: e.target.value })
+              )
+            }
           >
             <option value=""></option>
             <option value="Mr">Mr</option>
@@ -43,7 +38,11 @@ const History = () => {
             id="firstName"
             placeholder="firstName"
             value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={(e) =>
+              dispatch(
+                getInputFile({ name: e.target.name, value: e.target.value })
+              )
+            }
           />
         </div>
         {/* email */}
@@ -55,7 +54,11 @@ const History = () => {
             id="email"
             placeholder="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) =>
+              dispatch(
+                getInputFile({ name: e.target.name, value: e.target.value })
+              )
+            }
           />
         </div>
         {/*phoneNumber */}
@@ -67,7 +70,11 @@ const History = () => {
             id="phoneNumber"
             placeholder="phoneNumber"
             value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            onChange={(e) =>
+              dispatch(
+                getInputFile({ name: e.target.name, value: e.target.value })
+              )
+            }
           />
         </div>
         {/*  age*/}
@@ -79,7 +86,11 @@ const History = () => {
             id="age"
             placeholder="age"
             value={age}
-            onChange={(e) => setAge(e.target.value)}
+            onChange={(e) =>
+              dispatch(
+                getInputFile({ name: e.target.name, value: e.target.value })
+              )
+            }
           />
         </div>
         {/* gender */}
@@ -91,7 +102,11 @@ const History = () => {
               name="gender"
               id="man"
               value="man"
-              onChange={(e) => setGender(e.target.value)}
+              onChange={(e) =>
+                dispatch(
+                  getInputFile({ name: e.target.name, value: e.target.value })
+                )
+              }
             />
           </span>
           <span>
@@ -101,7 +116,11 @@ const History = () => {
               name="gender"
               id="woman"
               value="woman"
-              onChange={(e) => setGender(e.target.value)}
+              onChange={(e) =>
+                dispatch(
+                  getInputFile({ name: e.target.name, value: e.target.value })
+                )
+              }
             />
           </span>
         </div>
@@ -114,7 +133,14 @@ const History = () => {
               id="scales"
               name="scales"
               checked={favorite.scales}
-              onChange={handleChangeFavorite}
+              onChange={(e) =>
+                dispatch(
+                  getMultiSelect({
+                    filed: "favorite",
+                    name: e.target.name,
+                  })
+                )
+              }
             />
           </span>
           <span>
@@ -124,7 +150,14 @@ const History = () => {
               id="horns"
               name="horns"
               checked={favorite.horns}
-              onChange={handleChangeFavorite}
+              onChange={(e) =>
+                dispatch(
+                  getMultiSelect({
+                    filed: "favorite",
+                    name: e.target.name,
+                  })
+                )
+              }
             />
           </span>
         </div>
