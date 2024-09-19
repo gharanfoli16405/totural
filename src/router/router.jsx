@@ -17,6 +17,7 @@ import Login from "pages/Login";
 import AboutUs from "pages/AboutUs";
 import Profile from "pages/Profile";
 import History from "pages/History";
+import Cart from "pages/Cart/Cart";
 
 // const AboutUs = lazy(() => import("pages/AboutUs")); //promise , create File
 
@@ -37,6 +38,7 @@ const router = () => {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/history" element={<History />} />
+        <Route path="/cart" element={<Cart />} />
 
         {/* <Route path="chooseLanguage" element={<ChooseLanguage />} />
         <Route path="intro" element={<Intro />} />

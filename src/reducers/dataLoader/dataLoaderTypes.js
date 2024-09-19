@@ -1,5 +1,5 @@
 export const dataLoaderTypes = {
   FETCH: "FETCH",
-  SUCCESS: "SUCCESS",
+  SUCSESS: "SUCSESS",
   FAIL: "FAIL",
 };
