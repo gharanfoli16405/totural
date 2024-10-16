@@ -12,6 +12,10 @@ const info = [
   ["age", 30],
 ];
 
+const car01 = { brand: "peugoet", model: "206" };
+
+const names = ["Ali", "Hasaan", "Gholi", "Mamad"];
+
 const numbers = [32, 21, 22];
 
 const brands = ["McLaren", "Renault", "Ferrari", "Honda"];

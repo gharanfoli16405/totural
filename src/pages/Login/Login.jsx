@@ -1,71 +1,117 @@
-import Input from "components/Input";
-import { useState } from "react";
-
+import { useReducer } from "react";
+import { initialState, FormLoginReducer } from "reducers/login/reducer";
+import { changeNormalField, changeCheckBoxes } from "reducers/login/action";
 const Login = () => {
-  const [form, setform] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    age: null,
-    password: "",
-  });
+  const FullName = "full name";
+  const AGE = "age";
+  const PHONE_NUMBER = "phone number";
+  const GENDER = "gender";
+  const CITY = "city";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("submit");
-  };
+  const [fromDataState, dispatch] = useReducer(FormLoginReducer, initialState);
+  const { fullName, age, city, phoneNumber, gender, favorites } = fromDataState;
 
-  const handleChange = (e) => {
-    setform({ ...form, [e.target.name]: e.target.value });
+  const handleChange = ({target}) => {
+    if (target.name === "favorites") {
+      dispatch(
+        changeCheckBoxes({
+          name: target.name,
+          value: target.value,
+        })
+      );
+      return;
+    }
+    dispatch(changeNormalField({ name: e.target.name, value: e.target.value }));
   };
-  const { firstName, lastName, email, phoneNumber, age, password } = form;
 
   return (
-    <div>
-      <h1>Register</h1>
-      <form action="" onSubmit={handleSubmit}>
-        {/* firstName */}
-        <Input
-          type="text"
-          name="firstName"
-          value={firstName}
-          onChange={handleChange}
-        />
-
-        {/* lastName */}
-        <Input
-          type="text"
-          name="lastName"
-          value={lastName}
-          onChange={handleChange}
-        />
+    <>
+      <div className="">Form With useReducer</div>
+      <form action="">
+        {/* FullName */}
+        <div>
+          <label htmlFor={FullName}>{FullName} : </label>
+          <input
+            type="text"
+            placeholder={`Enter your ${FullName}`}
+            id={FullName}
+            name="fullName"
+            value={fullName}
+            onChange={handleChange}
+          />
+        </div>
         {/* age */}
-        <Input type="number" name="age" value={age} onChange={handleChange} />
-        {/* email */}
-        <Input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleChange}
-        />
+        <div>
+          <label htmlFor={AGE}>{AGE} : </label>
+          <input
+            type="number"
+            placeholder={`Enter your ${AGE}`}
+            id={AGE}
+            name={AGE}
+            value={age}
+            onChange={handleChange}
+          />
+        </div>
         {/* phoneNumber */}
-        <Input
-          type="tel"
-          name="phoneNumber"
-          value={phoneNumber}
-          onChange={handleChange}
-        />
-        {/*  password*/}
-        <Input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-        />
-        <button type="submit">Send</button>
+        <div>
+          <label htmlFor={PHONE_NUMBER}>{PHONE_NUMBER}</label>
+          <input
+            type="tel"
+            placeholder={`Enter your ${PHONE_NUMBER} : `}
+            id={PHONE_NUMBER}
+            name="phoneNumber"
+            value={phoneNumber}
+            onChange={handleChange}
+          />
+        </div>
+        {/* GENDER */}
+        <div>
+          <label htmlFor="man">man</label>
+          <input
+            type="radio"
+            name={GENDER}
+            id="man"
+            value="man"
+            checked={gender === "man"}
+            onChange={handleChange}
+          />
+          <label htmlFor="woman">woman</label>
+          <input
+            type="radio"
+            name={GENDER}
+            id="woman"
+            value="woman"
+            checked={gender === "woman"}
+            onChange={handleChange}
+          />
+        </div>
+        {/* city */}
+        <div>
+          <label htmlFor={CITY}>select your {CITY}</label>
+          <select name={CITY} id={CITY} value={city} onChange={handleChange}>
+            <option value=""></option>
+            <option value="Iran">Iran</option>
+            <option value="Germany">Geramny</option>
+          </select>
+        </div>
+        {/* favorites */}
+        <div className="flex">
+          {Object.keys(favorites).map((item) => (
+            <div key={item}>
+              <label htmlFor={item}> {item} </label>
+              <input
+                type="checkbox"
+                id={item}
+                name="favorites"
+                value={item}
+                checked={favorites[item]}
+                onChange={handleChange}
+              />
+            </div>
+          ))}
+        </div>
       </form>
-    </div>
+    </>
   );
 };
 

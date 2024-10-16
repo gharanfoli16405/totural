@@ -783,7 +783,7 @@ export const users = [
   },
 ];
 
-export const students = [
+export const miniUsersList = [
   {
     id: 1,
     email: "john@mail.com",
@@ -844,4 +844,9 @@ export const students = [
     creationAt: "2024-07-20T03:55:19.000Z",
     updatedAt: "2024-07-20T07:09:45.000Z",
   },
+];
+
+export const students = [
+  { name: "Shahram", id: 11 },
+  { name: "Hassan", id: 12 },
 ];
