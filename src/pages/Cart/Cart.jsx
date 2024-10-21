@@ -1,25 +1,19 @@
-import React, { useState } from "react";
-
-
-
 const Cart = () => {
-  const [count, setCount] = useState(0);
-  const handleIncrease = () => {
-    setCount(count + 1);
+  const firstFuntion = (callbackFunc) => {
+    setTimeout(() => {
+      console.log("🚀 ~ firstFuntion ");
+      console.log("---------------");
+      callbackFunc();
+    }, 3000);
   };
 
-  const incrementCountTwice = () => {
-    handleIncrease();
-    handleIncrease();
+  const sectondFunction = () => {
+    console.log("🚀 ~ sectondFunction ");
   };
 
-  return (
-    <>
-      {/* <button onClick={() => setCount(count - 1)}>decrease</button> */}
-      <div>{count}</div>
-      <button onClick={incrementCountTwice}>increase</button>
-    </>
-  );
+  firstFuntion(sectondFunction);
+
+  return <div>iN THE NAME OF GOD</div>;
 };
 
 export default Cart;
