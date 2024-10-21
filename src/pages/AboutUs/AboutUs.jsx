@@ -1,11 +1,11 @@
 import { person, brands } from "constant/test";
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 
 const AboutUs = () => {
   const { firstName: nikName, lastName, age } = person;
   const [, , brand] = brands;
-  const data = useLoaderData();
-  console.log("🚀 ~ AboutUs ~ data:", data);
+  // const data = useLoaderData();
+  // console.log("🚀 ~ AboutUs ~ data:", data);
 
   return (
     <>

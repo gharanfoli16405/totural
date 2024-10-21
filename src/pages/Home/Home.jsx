@@ -1,8 +1,4 @@
-import { useLoaderData } from "react-router-dom";
-
 export default function Home() {
-  const users = useLoaderData();
-
   // console.log("users", users);
 
   return (
