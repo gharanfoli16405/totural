@@ -1,26 +1,6 @@
+import { getUser, getPosts, getComments } from "helpers/callback02";
 export default function Home() {
-  // console.log("users", users);
-
-  // const serverRequest = (query, callBack) => {
-  //   setTimeout(() => {
-  //     const response = `my name is ${query}`;
-  //     getResponse(response);
-  //   }, 2000);
-  // };
-
-  // const getResponse = (res) => {
-  //   console.log("print response", res);
-  // };
-
-  // serverRequest("Mohsen", getResponse);
-
-
-
-
-
-
-
-
+  getUser(123, (res) => getPosts(res, (res2) => getComments(res2)));
   return (
     <>
       <h1>In the name of god</h1>
