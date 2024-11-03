@@ -1,9 +1,22 @@
-import { getUser, getPosts, getComments } from "helpers/callback02";
-export default function Home() {
-  getUser(123, (res) => getPosts(res, (res2) => getComments(res2)));
-  return (
-    <>
-      <h1>In the name of god</h1>
-    </>
-  );
-}
+// import React, { Component } from "react";
+
+// export default class Home extends Component {
+//   render() {
+//     // console.log(["hi"]);
+//     console.log(this);
+//     return <div>Home</div>;
+//   }
+// }
+
+import React from "react";
+import { useEffect } from "react";
+
+const Home = () => {
+  useEffect(() => {
+    console.log(this);
+  }, []);
+
+  return <div>Home</div>;
+};
+
+export default Home;

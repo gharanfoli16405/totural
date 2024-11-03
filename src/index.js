@@ -8,11 +8,11 @@ import { BrowserRouter } from "react-router-dom";
 
 //
 const root = ReactDOM.createRoot(document.getElementById("root"));
-console.log("index.js");
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={JSXRouter} />
 
-    <BrowserRouter>{/* <App /> */}</BrowserRouter>
-  </React.StrictMode>
+root.render(
+  // <React.StrictMode>
+  <RouterProvider router={JSXRouter} />
+
+  // {/* // <BrowserRouter><App /></BrowserRouter> */}
+  // </React.StrictMode>
 );
