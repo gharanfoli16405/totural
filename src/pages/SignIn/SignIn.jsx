@@ -1,24 +1,22 @@
-import { useReducer } from "react";
+import { useState } from "react";
 import { Col, Form, Row, Button } from "react-bootstrap";
-import { changeInput } from "reducers/formLogin/formLoginAction";
-import {
-  initialState,
-  formLoginReducer,
-} from "reducers/formLogin/formLoginReducdr";
 
 const SignIn = () => {
-  const [state, dispatch] = useReducer(formLoginReducer, initialState);
+  const [dataForm, setDataForm] = useState({
+    user: "",
+    password: "",
+  });
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
-    dispatch(changeInput({ [name]: value }));
+    setDataForm({ ...dataForm, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  const { user, password } = state;
+  const { user, password } = dataForm;
   return (
     <>
       <Form onSubmit={handleSubmit}>
